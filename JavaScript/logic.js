@@ -100,64 +100,60 @@ fetch(link)
 //____________________Graphs_____VICKY__________________________________________________
 
 // TOTAL REVENUE & TAXES -- LINE GRAPH
-//fetch data from ../json/stateboundry_betting_info_added.json and prepare a pie chart with tax_status
-d3.json("https://vickyl86.github.io/Dashboard_1/json/stateboundry_betting_info_added.json").then(function(data) {
-    console.log(data);
 
-    // Convert object to an array of features
-    var features = data.features;
+// Load JSON data using D3.js
+d3.json("https://vickyl86.github.io/Dashboard_1/json/state_detail.json").then(function(data) {
+    // Extract date and revenue from the JSON data
+    const jsonData = data; // Assuming the JSON structure matches your requirements
+    const dates = jsonData.map(item => item.date);
+    const revenues = jsonData.map(item => item.revenue);
 
-    // Function to update the pie chart based on the selected year
-    function updatePieChart(selectedYear) {
-        // Prepare data for pie chart
-        var taxStatusCounts = {
-            "YES": 0, // Custom label for "Yes"
-            "NO": 0 // Custom label for "No"
-        };
+    // Set up the SVG dimensions
+    const svgWidth = 800;
+    const svgHeight = 400;
 
-        // Loop through the features and count tax statuses
-        features.forEach(function(feature) {
-            var yearLegalized = parseInt(feature.properties.year_legalized);
-            if (selectedYear === 0 || yearLegalized === selectedYear) {
-                var tax = feature.properties.tax_status;
-                if (tax === "Yes") {
-                    taxStatusCounts["YES"] += 1;
-                } else if (tax === "No") {
-                    taxStatusCounts["NO"] += 1;
-                }
-            }
-        });
+    // Create an SVG element for the line chart
+    const svg = d3.select("#line-chart-container")
+        .append("svg")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight);
 
-        // Extract tax status labels and counts for plotting
-        var taxStatusLabels = Object.keys(taxStatusCounts);
-        var taxStatusValues = Object.values(taxStatusCounts);
+    // Set up the scales for x and y axes
+    const xScale = d3.scaleBand()
+        .domain(dates)
+        .range([0, svgWidth])
+        .padding(0.1);
 
-        // Create pie chart data
-        var pieChartData = [{
-            values: taxStatusValues,
-            labels: taxStatusLabels,
-            type: "pie"
-        }];
+    const yScale = d3.scaleLinear()
+        .domain([0, d3.max(revenues)])
+        .nice()
+        .range([svgHeight, 0]);
 
-        var pieChartLayout = {
-            title: "States Taxing Income from Sports Betting",
-            height: 500,
-            width: 500
-        };
+    // Create the line generator
+    const line = d3.line()
+        .x((d, i) => xScale(dates[i]))
+        .y(d => yScale(d));
 
-        Plotly.newPlot("pie-chart", pieChartData, pieChartLayout); // Make sure to target the correct element ID here
-    }
+    // Append the line to the SVG
+    svg.append("path")
+        .datum(revenues)
+        .attr("fill", "none")
+        .attr("stroke", "blue")
+        .attr("stroke-width", 2)
+        .attr("d", line);
 
-    // Initial update based on selected year
-    const selectedYear = parseInt(document.getElementById('yearSelect').value);
-    updatePieChart(selectedYear);
+    // Create x-axis
+    svg.append("g")
+        .attr("transform", `translate(0,${svgHeight})`)
+        .call(d3.axisBottom(xScale));
 
-    // Add event listener to the year dropdown
-    document.getElementById('yearSelect').addEventListener('change', function () {
-        const selectedYear = parseInt(this.value);
-        updatePieChart(selectedYear);
-    });
+    // Create y-axis
+    svg.append("g")
+        .call(d3.axisLeft(yScale));
+
+    // Add labels, titles, and other chart elements as needed
 });
+
 
 // INCOME TAXATION -- PIE CHART
 // fetch data from json "../json/national_market.json" and prepare a line graph with sum of revenue for each year
@@ -215,6 +211,26 @@ d3.json("https://vickyl86.github.io/Dashboard_1/json/national_market.json").then
 
     Plotly.newPlot("line-graph", data, layout); // Make sure to target the correct element ID here
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ----------------- STATE TOGGLE on the State Data Page
 
