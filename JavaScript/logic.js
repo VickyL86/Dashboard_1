@@ -104,6 +104,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch JSON data
     d3.json("https://vickyl86.github.io/Dashboard_1/json/rev_over_time_ways_to_bet.json").then(function(data) {
         
+        // Color mapping
+        const colorMap = {
+            "Online & In-Person": "#F39C12",
+            "In Person Only": "#194570",
+            "Online Only": "#3498DB"
+        };
+
         // Parsing date for better visualization
         const parseDate = d3.timeParse("%B %Y");
         data.forEach(d => {
@@ -145,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     y: value.map(d => d.revenue),
                     mode: 'lines',
                     name: key,
+                    line: { color: colorMap[key] },  // Set line color based on mapping
                     hovertemplate: `${key}<br>Revenue: %{y}<br>Date: %{x}<extra></extra>`
                 };
                 traces.push(trace);
@@ -171,7 +179,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const filteredData = data.filter(d => d.year == selectedYear || selectedYear == 0);
             drawChart(filteredData);
         });
-
     });
 });
 
@@ -181,6 +188,13 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     // Function to update chart based on selected year
     const updateChart = function(selectedYear) {
+        // Define the color mapping for each 'Ways_to_bet' category
+        const colorMap = {
+            "Online & In-Person": "#F39C12",
+            "In Person Only": "#194570",
+            "Online Only": "#3498DB"
+        };
+
         d3.json("https://vickyl86.github.io/Dashboard_1/json/rev_over_time_ways_to_bet.json").then(function(data) {
             // Filter data based on selected year if applicable
             if (selectedYear !== "0") {
@@ -193,13 +207,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 v => d3.sum(v, d => d.taxes),
                 d => selectedYear === "0" ? d.year : d.month,
                 d => d.Ways_to_bet
-            );
-
-            // Calculate total tax for each time period (year or month)
-            const totalTaxes = d3.rollups(
-                data,
-                v => d3.sum(v, d => d.taxes),
-                d => selectedYear === "0" ? d.year : d.month
             );
 
             const traces = [];
@@ -215,21 +222,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     hovertext: new Array(allDates.length).fill(''),
                     name: Ways_to_bet,
                     type: 'bar',
-                    hoverinfo: 'text'
+                    hoverinfo: 'text',
+                    marker: { color: colorMap[Ways_to_bet] } // Assign color based on the mapping
                 };
                 traces.push(trace);
             });
 
             groupedData.forEach(([date, entries]) => {
-                const totalTaxForDate = totalTaxes.find(([d]) => d === date)[1];
                 entries.forEach(([Ways_to_bet, taxes]) => {
                     let trace = traces.find(t => t.name === Ways_to_bet);
                     if (trace) {
-                        const idx = allDates.indexOf(date);
-                        trace.y[idx] = taxes;
-
-                        const percentage = ((taxes / totalTaxForDate) * 100).toFixed(2);
-                        trace.hovertext[idx] = `${Ways_to_bet}: ${taxes} (${percentage}%)`;
+                        trace.y[allDates.indexOf(date)] = taxes;
+                        trace.hovertext[allDates.indexOf(date)] = `${Ways_to_bet}: ${taxes}`;
                     }
                 });
             });
@@ -240,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 yaxis: { title: 'Tax Revenue' },
                 barmode: 'stack',
                 hovermode: 'closest',
-                showlegend: false
+                showlegend: false // Hide the legend
             };
 
             Plotly.newPlot('bar-chart', traces, layout);
