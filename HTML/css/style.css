@@ -116,4 +116,13 @@ body {
     margin: 5px 0;
 }
 
-/* line chart for National Page */
+
+/* Header for the summary table next to the map */
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px; /* Adjust the height as needed */
+  background-color: #fffefe; /* Example background color */
+}
