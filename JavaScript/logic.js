@@ -188,7 +188,7 @@ function createTable(data) {
 
 
 
-//____________________Graphs_____VICKY__________________________________________________
+//____________________Graphs_______________________________________________________
 
 // TOTAL REVENUE -- LINE GRAPH
 document.addEventListener("DOMContentLoaded", function() {
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     let trace = traces.find(t => t.name === Ways_to_bet);
                     if (trace) {
                         trace.y[allDates.indexOf(date)] = taxes;
-                        trace.hovertext[allDates.indexOf(date)] = `${Ways_to_bet}: ${taxes}`;
+                        trace.hovertext[allDates.indexOf(date)] = `${Ways_to_bet} <br>Taxes:${taxes}`;
                     }
                 });
             });
