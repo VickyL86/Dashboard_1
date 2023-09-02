@@ -396,39 +396,11 @@ async function populateStates(searchTerm = '') {
     });
 }
 
-// Update summary table with aggregated data for selected state
-function updateSummaryTable(selectedState) {
-    const stateData = statesData.filter(item => item.state === selectedState);
+///--- SUMMARY TABLE PLACEHOLDER----------------------------
 
-    if (stateData.length > 0) {
-        const totalRevenue = stateData.reduce((sum, item) => sum + item.revenue, 0);
-        const totalTaxes = stateData.reduce((sum, item) => sum + item.taxes, 0);
 
-        stateTable.innerHTML = `
-            <tr>
-                <th>State Name</th>
-                <th>Total Revenues</th>
-                <th>Total Taxes</th>
-            </tr>
-            <tr>
-                <td>${selectedState}</td>
-                <td>${totalRevenue}</td>
-                <td>${totalTaxes}</td>
-            </tr>
-        `;
-    } else {
-        stateTable.innerHTML = `
-            <tr>
-                <th>State Name</th>
-                <th>Total Revenues</th>
-                <th>Total Taxes</th>
-            </tr>
-            <tr>
-                <td colspan="3">No data available for selected state.</td>
-            </tr>
-        `;
-    }
-}
+///--- SUMMARY TABLE PLACEHOLDER----------------------------
+
 
 // Handle search input changes
 stateSearch.addEventListener('input', () => {
@@ -474,19 +446,31 @@ function updateGraph(selectedState) {
         const dates = stateData.map(item => new Date(item.date));
         const revenue = stateData.map(item => item.revenue);
         const taxes = stateData.map(item => item.taxes);
+        
+        // Pick a random index for color selection
+        const randomIndex = Math.floor(Math.random() * stateData.length);
+        const randomWaysToBet = stateData[randomIndex].Ways_to_bet;
 
         const revenueTrace = {
             x: dates,
             y: revenue,
-            mode: 'lines+markers',
-            name: 'Revenue'
+            mode: 'line',
+            name: 'Revenue',
+            line: {
+                color: getColorForWaysToBet(randomWaysToBet),
+                width: 2 // Adjust the line width
+            }
         };
 
         const taxesTrace = {
             x: dates,
             y: taxes,
-            mode: 'lines+markers',
-            name: 'Taxes'
+            mode: 'lines',
+            name: 'Taxes',
+            line: {
+                color: 'darkgrey', // Set color for the taxes line
+                width: 2 // Adjust the line width
+            }
         };
 
         const layout = {
@@ -509,6 +493,14 @@ function updateGraph(selectedState) {
     }
 }
 
+// Function to get color based on Ways_to_bet value
+function getColorForWaysToBet(waysToBet) {
+    if (waysToBet === "Online & In-Person") return "#F39C12";
+    if (waysToBet === "In Person Only") return "#194570";
+    if (waysToBet === "Online Only") return "#3498DB";
+    return "rgba(70, 70, 80, 0.7)"; // Default color
+}
+
 // Handle state selection changes
 stateDropdown.addEventListener('change', () => {
     const selectedState = stateDropdown.value;
@@ -522,4 +514,126 @@ fetchStatesData().then(() => {
 
 
 
-// ----------------- Line Graph for revenue & taxes  ----------
+// ----------------- Bar Graph for revenue per capita  ----------
+
+
+const revenuePerCapitaGraph = document.getElementById('revenuePerCapitaGraph');
+
+// Fetch the JSON data from the URL
+async function fetchStatesData() {
+    try {
+        const response = await fetch('https://vickyl86.github.io/Dashboard_1/json/state_detail.json');
+        const data = await response.json();
+        statesData = data; // Store the fetched data
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return [];
+    }
+}
+
+// Calculate YTD start date
+function getYTDStartDate() {
+    const currentDate = new Date();
+    return new Date(currentDate.getFullYear(), 0, 1); // January 1st of current year
+}
+
+// Calculate linear trendline
+function calculateTrendline(x, y) {
+    const n = x.length;
+    const sumX = x.reduce((acc, val) => acc + val, 0);
+    const sumY = y.reduce((acc, val) => acc + val, 0);
+    const sumXY = x.reduce((acc, val, idx) => acc + val * y[idx], 0);
+    const sumXSquare = x.reduce((acc, val) => acc + val * val, 0);
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumXSquare - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return x.map(val => slope * val + intercept);
+}
+
+// Update revenue per capita bar graph based on selected state
+function updateBarGraph(selectedState) {
+    const stateData = statesData.filter(item => item.state === selectedState);
+
+    if (stateData.length > 0) {
+        const dates = stateData.map(item => new Date(item.date));
+        const revenuePerCapita = stateData.map(item => parseFloat(item.revenue_per_capita.replace('$', '')));
+        const waysToBet = stateData.map(item => item.Ways_to_bet);
+
+        const barColors = waysToBet.map(way => {
+            if (way === "Online & In-Person") return "#F39C12";
+            if (way === "In Person Only") return "#194570";
+            if (way === "Online Only") return "#3498DB";
+            return "rgba(70, 70, 80, 0.7)"; // Default color
+        });
+
+        const barTrace = {
+            x: dates,
+            y: revenuePerCapita,
+            type: 'bar',
+            name: 'Rev per Person', // Name for the bar trace
+            marker: {
+                color: barColors // Set colors based on Ways_to_bet
+            }
+        };
+
+        const trendlineX = dates.map(date => date.getTime()); // Convert dates to timestamps
+        const trendlineY = calculateTrendline(trendlineX, revenuePerCapita);
+
+        const trendline = {
+            x: dates,
+            y: trendlineY,
+            mode: 'lines',
+            line: {
+                color: 'red',
+                dash: 'dash'
+            },
+            name: 'Trendline'
+        };
+
+        const layout = {
+            title: `${selectedState} Revenue per Capita Over Time`,
+            xaxis: {
+                title: 'Date',
+                type: 'date',
+                tickformat: '%b %Y', // Month name & year (e.g., Jan 2023)
+                tickangle: -45 // Adjust the angle of tick labels
+            },
+            yaxis: { title: 'Revenue per Capita ($)', hoverformat: '$,.2f' }, // Add dollar sign in hover
+            updatemenus: [
+                {
+                    buttons: [
+                        { method: 'relayout', args: ['xaxis.range', [getYTDStartDate(), new Date()]], label: 'YTD' },
+                        { method: 'relayout', args: ['xaxis.range', [new Date().setFullYear(new Date().getFullYear() - 1), new Date()]], label: '12 Months' },
+                        { method: 'relayout', args: ['xaxis.range', [dates[0], dates[dates.length - 1]]], label: 'All Data' }
+                    ],
+                    direction: 'right', // Position toggle boxes on the right side
+                    showactive: false,
+                    type: 'buttons',
+                    x: 1.05, // Adjust x position
+                    xanchor: 'right',
+                    y: 1.15,
+                    yanchor: 'top'
+                }
+            ]
+        };
+
+        const data = [barTrace, trendline];
+
+        Plotly.newPlot(revenuePerCapitaGraph, data, layout);
+    } else {
+        revenuePerCapitaGraph.innerHTML = 'No data available for selected state.';
+    }
+}
+
+// Handle state selection changes for bar graph
+stateDropdown.addEventListener('change', () => {
+    const selectedState = stateDropdown.value;
+    updateBarGraph(selectedState);
+});
+
+// Fetch data and populate initial states
+fetchStatesData().then(() => {
+    populateStates();
+});
