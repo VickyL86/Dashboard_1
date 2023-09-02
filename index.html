@@ -104,28 +104,41 @@
     <!-------------------------------STATE DATA PAGE BEGINS HERE-------------------------------->
     <div class="page" id="state-page">
         <!-- State Data content -->
-        <h1 class="page-title">Sports Betting by State</h1>
-        <label for="stateSelect">Select a State:</label>
-        <input type="text" id="stateSearch" placeholder="Search for a state...">
-        <select id="stateSelect"></select>
-        
-        <div class="grid-container">
-          <div class="grid-item top-left">
-            <!-- Map with Legend -->
-            <!-- You can embed your map component here -->
-          </div>
-          <div class="grid-item top-right">
+      <h1 class="page-title">Sports Betting by State</h1>
+      <label for="stateSelect">Select a State:</label>
+          <input type="text" id="stateSearch" placeholder="Search for a state...">
+          <select id="stateDropdown"></select>
+            
+      <div class="grid-container">
+        <div class="grid-item top-left">
+            <div class="grid-item state-table">
+                <table id="stateTable">
+                    <tr>
+                      <th colspan="2">State Summary Table</th>
+                    </tr>
+                    <tr>
+                      <td>Betting Information</td>
+                      <td>Census Data</td>
+                    </tr>
+                    <tr>
+                      <td id="bettingInfo" colspan="2"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid-item top-right">
             <!-- Line Chart -->
-            <!-- You can embed your line chart component here -->
-          </div>
-          <div class="grid-item bottom-left">
+            <div id="revenueTaxesGraph"></div>
+        </div>
+        <div class="grid-item bottom-left">
             <!-- Bar Graph -->
             <!-- You can embed your bar graph component here -->
-          </div>
-          <div class="grid-item bottom-right">
+        </div>
+        <div class="grid-item bottom-right">
             <!-- Pie Chart -->
             <!-- You can embed your pie chart component here -->
-          </div>
+        </div>
         </div>
       </div>
     </div>

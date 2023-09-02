@@ -351,3 +351,175 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// ----------------------STATE DATA PAGE----------------------------------------------
+
+const stateDropdown = document.getElementById('stateDropdown');
+const stateSearch = document.getElementById('stateSearch');
+const summaryTable = document.getElementById('stateTable');
+
+let statesData = [];
+
+// Fetch the JSON data from the URL
+async function fetchStatesData() {
+    try {
+        const response = await fetch('https://vickyl86.github.io/Dashboard_1/json/state_detail.json');
+        const data = await response.json();
+        statesData = data; // Store the fetched data
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return [];
+    }
+}
+
+// Populate the select options with states from the JSON data
+async function populateStates(searchTerm = '') {
+    stateDropdown.innerHTML = ''; 
+
+    // Add the "Choose Your State" option as the first option
+    const chooseOption = document.createElement('option');
+    chooseOption.value = '';
+    chooseOption.textContent = 'Choose Your State';
+    stateDropdown.appendChild(chooseOption);
+
+    const uniqueStates = [...new Set(statesData.map(item => item.state))];
+
+    const filteredStates = uniqueStates.filter(state =>
+        state.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    filteredStates.forEach(state => {
+        const option = document.createElement('option');
+        option.value = state;
+        option.textContent = state;
+        stateDropdown.appendChild(option);
+    });
+}
+
+// Update summary table with aggregated data for selected state
+function updateSummaryTable(selectedState) {
+    const stateData = statesData.filter(item => item.state === selectedState);
+
+    if (stateData.length > 0) {
+        const totalRevenue = stateData.reduce((sum, item) => sum + item.revenue, 0);
+        const totalTaxes = stateData.reduce((sum, item) => sum + item.taxes, 0);
+
+        stateTable.innerHTML = `
+            <tr>
+                <th>State Name</th>
+                <th>Total Revenues</th>
+                <th>Total Taxes</th>
+            </tr>
+            <tr>
+                <td>${selectedState}</td>
+                <td>${totalRevenue}</td>
+                <td>${totalTaxes}</td>
+            </tr>
+        `;
+    } else {
+        stateTable.innerHTML = `
+            <tr>
+                <th>State Name</th>
+                <th>Total Revenues</th>
+                <th>Total Taxes</th>
+            </tr>
+            <tr>
+                <td colspan="3">No data available for selected state.</td>
+            </tr>
+        `;
+    }
+}
+
+// Handle search input changes
+stateSearch.addEventListener('input', () => {
+    populateStates(stateSearch.value);
+    updateSummaryTable(stateSearch.value);
+});
+
+// Handle state selection changes
+stateDropdown.addEventListener('change', () => {
+    const selectedState = stateDropdown.value;
+    updateSummaryTable(selectedState);
+});
+
+// Fetch data and populate initial states
+fetchStatesData().then(() => {
+    populateStates();
+});
+
+
+// ----------------- Line Graph for revenue & taxes  ----------
+
+
+const revenueTaxesGraph = document.getElementById('revenueTaxesGraph');
+
+// Fetch the JSON data from the URL
+async function fetchStatesData() {
+    try {
+        const response = await fetch('https://vickyl86.github.io/Dashboard_1/json/state_detail.json');
+        const data = await response.json();
+        statesData = data; // Store the fetched data
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return [];
+    }
+}
+
+// Update revenue and taxes line graph based on selected state
+function updateGraph(selectedState) {
+    const stateData = statesData.filter(item => item.state === selectedState);
+
+    if (stateData.length > 0) {
+        const dates = stateData.map(item => new Date(item.date));
+        const revenue = stateData.map(item => item.revenue);
+        const taxes = stateData.map(item => item.taxes);
+
+        const revenueTrace = {
+            x: dates,
+            y: revenue,
+            mode: 'lines+markers',
+            name: 'Revenue'
+        };
+
+        const taxesTrace = {
+            x: dates,
+            y: taxes,
+            mode: 'lines+markers',
+            name: 'Taxes'
+        };
+
+        const layout = {
+            title: `${selectedState} Revenue and Taxes Over Time`,
+            xaxis: {
+                title: 'Use toggles to zoom in on a date range',
+                type: 'date',
+                tickformat: '%b %Y', // Month name & year (e.g., Jan 2023)
+                rangeslider: { visible: true },
+                tickangle: -45 // Adjust the angle of tick labels
+            },
+            yaxis: { title: 'Amount ($)' }
+        };
+
+        const data = [revenueTrace, taxesTrace];
+
+        Plotly.newPlot(revenueTaxesGraph, data, layout);
+    } else {
+        revenueTaxesGraph.innerHTML = 'No data available for selected state.';
+    }
+}
+
+// Handle state selection changes
+stateDropdown.addEventListener('change', () => {
+    const selectedState = stateDropdown.value;
+    updateGraph(selectedState);
+});
+
+// Fetch data and populate initial states
+fetchStatesData().then(() => {
+    populateStates();
+});
+
+
+
+// ----------------- Line Graph for revenue & taxes  ----------
