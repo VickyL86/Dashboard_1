@@ -97,6 +97,97 @@ fetch(link)
         });
     });
 
+// __________________SUMMARY TABLE_________________________________________________________________________
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Define the link to your JSON data
+    let link = "https://vickyl86.github.io/Dashboard_1/json/stateboundry_betting_info_added.json";
+
+    // Fetch the JSON data
+    d3.json(link).then(function(data) {
+        // Listen to dropdown change
+        document.getElementById('yearSelect').addEventListener('change', function() {
+            const selectedYear = this.value;
+            // Filter the data based on the 'year_legalized'
+            const filteredData = data.features.filter(d => d.properties.year_legalized == selectedYear);
+            createTable(filteredData);
+        });
+    });
+});
+
+function createTable(data) {
+    // Sort data by revenue in descending order
+    data.sort((a, b) => {
+        return parseInt(b.properties.revenue.replace(/[\$,]/g, "")) - parseInt(a.properties.revenue.replace(/[\$,]/g, ""));
+    });
+    // Get the table element
+    let table = document.getElementById('summary-table');
+    // Clear previous rows
+    table.innerHTML = "";
+    // Create table headers
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    let headers = ["State", "Revenue", "Taxes", "Date Legalized"];
+    for (let key of headers) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        th.style.textAlign = "center";  // Center align the text
+        row.appendChild(th);
+    }
+
+    let totalRevenue = 0;
+    let totalTaxes = 0;
+
+    // Create table rows
+    for (let element of data) {
+        let row = table.insertRow();
+        let keys = ["NAME", "revenue", "taxes", "date_legalized"];
+        for (let i = 0; i < keys.length; i++) {
+            let cell = row.insertCell();
+            let value = element.properties[keys[i]];
+
+            // If the key is 'revenue' or 'taxes', format the number
+            if (keys[i] === "revenue" || keys[i] === "taxes") {
+                value = parseInt(value.replace(/[\$,]/g, "")).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+                cell.style.paddingLeft = "20px"; // Add padding
+                cell.style.paddingRight = "20px"; // Add padding
+            }
+
+            let text = document.createTextNode(value);
+            cell.appendChild(text);
+
+            // Add text alignment style for "Date Legalized" column
+            if (keys[i] === "date_legalized") {
+                cell.style.textAlign = "right";
+            }
+        }
+
+        // Convert and sum revenue and taxes
+        totalRevenue += parseInt(element.properties.revenue.replace(/[\$,]/g, ""));
+        totalTaxes += parseInt(element.properties.taxes.replace(/[\$,]/g, ""));
+    }
+
+    // Add a row for totals
+    let tfoot = table.createTFoot();
+    let footerRow = tfoot.insertRow();
+    footerRow.style.fontWeight = "bold";  // Set the entire row to bold
+    footerRow.insertCell().innerHTML = "Total";
+    let revenueCell = footerRow.insertCell();
+    let taxCell = footerRow.insertCell();
+    revenueCell.innerHTML = parseInt(totalRevenue).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    taxCell.innerHTML = parseInt(totalTaxes).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    revenueCell.style.paddingLeft = "20px"; // Add padding
+    revenueCell.style.paddingRight = "20px"; // Add padding
+    taxCell.style.paddingLeft = "20px"; // Add padding
+    taxCell.style.paddingRight = "20px"; // Add padding
+    footerRow.insertCell().innerHTML = "";
+}
+
+
+
+
+
 //____________________Graphs_____VICKY__________________________________________________
 
 // TOTAL REVENUE -- LINE GRAPH
