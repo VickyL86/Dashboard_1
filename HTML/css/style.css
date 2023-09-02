@@ -126,3 +126,25 @@ body {
   height: 35px; /* Adjust the height as needed */
   background-color: #fffefe; /* Example background color */
 }
+
+
+/* State specific Summary table styles */
+
+/* Center-align the text within the summary sections */
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.summary-section p {
+  margin: 5px 0;
+}
+
+/* Center-align the heading within the summary sections */
+.summary-section h3 {
+  text-align: center;
+}

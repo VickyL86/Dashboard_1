@@ -372,15 +372,8 @@ async function fetchStatesData() {
     }
 }
 
-// Populate the select options with states from the JSON data
 async function populateStates(searchTerm = '') {
-    stateDropdown.innerHTML = ''; 
-
-    // Add the "Choose Your State" option as the first option
-    const chooseOption = document.createElement('option');
-    chooseOption.value = '';
-    chooseOption.textContent = 'Choose Your State';
-    stateDropdown.appendChild(chooseOption);
+    stateDropdown.innerHTML = '';
 
     const uniqueStates = [...new Set(statesData.map(item => item.state))];
 
@@ -388,27 +381,73 @@ async function populateStates(searchTerm = '') {
         state.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // Populate the dropdown directly with the first state
     filteredStates.forEach(state => {
         const option = document.createElement('option');
         option.value = state;
         option.textContent = state;
         stateDropdown.appendChild(option);
     });
+
+    // Trigger the state selection and summary update for the first state
+    if (filteredStates.length > 0) {
+        const firstState = filteredStates[0];
+        updateGraph(firstState);
+        updateSummaryTable(firstState);
+    }
 }
 
 ///--- SUMMARY TABLE PLACEHOLDER----------------------------
 
+// Function to update the state summary table
+function updateSummaryTable(selectedState) {
+    const stateData = statesData.filter(item => item.state === selectedState);
 
+    if (stateData.length > 0) {
+        const summaryTable = document.getElementById('stateSummary');
+        const summaryContent = `
+            <h2>State Summary Table</h2>
+            <table>
+                <tr><td>State:</td><td>${stateData[0].state}</td></tr>
+                <tr><td>Revenue:</td><td>${stateData[0].revenue}</td></tr>
+                <tr><td>Taxes:</td><td>${stateData[0].taxes}</td></tr>
+                <tr><td>Betting:</td><td>${stateData[0].Ways_to_bet}</td></tr>
+                <tr><td>Legalized in:</td><td>${stateData[0].date}</td></tr>
+                <tr><td colspan="2"><h3>Census Data</h3></td></tr>
+                <tr><td>Population 18+:</td><td>${stateData[0].population_over_18}</td></tr>
+                <tr><td>Median Income:</td><td>${stateData[0].earnings_median}</td></tr>
+            </table>
+        `;
+        summaryTable.innerHTML = summaryContent;
+    } else {
+        const summaryTable = document.getElementById('stateSummary');
+        summaryTable.innerHTML = 'No data available for selected state.';
+    }
+}
 
+// Handle search input changes
+stateSearch.addEventListener('input', () => {
+    populateStates(stateSearch.value);
+    updateSummaryTable(stateSearch.value);
+});
 
+// Handle state selection changes
+stateDropdown.addEventListener('change', () => {
+    const selectedState = stateDropdown.value;
+    updateSummaryTable(selectedState);
+});
 
-
-
+// Fetch data and populate initial states
+fetchStatesData().then(() => {
+    populateStates();
+});
 
 
 
 
 ///--- SUMMARY TABLE PLACEHOLDER----------------------------
+
+
 
 
 // Handle search input changes
@@ -540,6 +579,18 @@ async function fetchStatesData() {
         return [];
     }
 }
+
+// Fetch data and populate initial states
+fetchStatesData().then(() => {
+    populateStates().then(() => {
+        // Get the first state from the dropdown
+        const firstState = stateDropdown.options[0].value;
+
+        // Update the bar chart with the first state
+        updateBarGraph(firstState);
+    });
+});
+
 
 // Calculate YTD start date
 function getYTDStartDate() {
