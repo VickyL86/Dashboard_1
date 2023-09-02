@@ -100,117 +100,60 @@ fetch(link)
 //____________________Graphs_____VICKY__________________________________________________
 
 // TOTAL REVENUE & TAXES -- LINE GRAPH
-
-// Load JSON data using D3.js
+// Load the JSON data from the provided URL
 d3.json("https://vickyl86.github.io/Dashboard_1/json/state_detail.json").then(function(data) {
-    // Extract date and revenue from the JSON data
-    const jsonData = data; // Assuming the JSON structure matches your requirements
-    const dates = jsonData.map(item => item.date);
-    const revenues = jsonData.map(item => item.revenue);
+    // Group the data by "year" and "Ways_to_bet"
+    const groupedData = {};
+    data.forEach(item => {
+        const year = item.year;
+        const waysToBet = item.Ways_to_bet;
 
-    // Set up the SVG dimensions
-    const svgWidth = 800;
-    const svgHeight = 400;
+        // Initialize an empty array for each year if it doesn't exist
+        groupedData[year] = groupedData[year] || {};
 
-    // Create an SVG element for the line chart
-    const svg = d3.select("#line-chart-container")
-        .append("svg")
-        .attr("width", svgWidth)
-        .attr("height", svgHeight);
+        // Initialize an empty array for each "Ways_to_bet" category if it doesn't exist within the year
+        groupedData[year][waysToBet] = groupedData[year][waysToBet] || [];
 
-    // Set up the scales for x and y axes
-    const xScale = d3.scaleBand()
-        .domain(dates)
-        .range([0, svgWidth])
-        .padding(0.1);
+        // Push the data item into the appropriate category within the year
+        groupedData[year][waysToBet].push(item);
+    });
 
-    const yScale = d3.scaleLinear()
-        .domain([0, d3.max(revenues)])
-        .nice()
-        .range([svgHeight, 0]);
+    // Create traces for each "Ways_to_bet" category within each year
+    const traces = [];
+    for (const year in groupedData) {
+        if (groupedData.hasOwnProperty(year)) {
+            for (const category in groupedData[year]) {
+                if (groupedData[year].hasOwnProperty(category)) {
+                    const categoryData = groupedData[year][category];
+                    const dates = categoryData.map(item => item.date);
+                    const revenues = categoryData.map(item => item.revenue);
 
-    // Create the line generator
-    const line = d3.line()
-        .x((d, i) => xScale(dates[i]))
-        .y(d => yScale(d));
+                    traces.push({
+                        x: dates,
+                        y: revenues,
+                        type: 'line',
+                        mode: 'lines+markers',
+                        name: `${category} (${year})`,
+                    });
+                }
+            }
+        }
+    }
 
-    // Append the line to the SVG
-    svg.append("path")
-        .datum(revenues)
-        .attr("fill", "none")
-        .attr("stroke", "blue")
-        .attr("stroke-width", 2)
-        .attr("d", line);
+    // Define the layout for the chart
+    const layout = {
+        title: 'Total Revenue Over Time by Ways to Bet and Year',
+        xaxis: { title: 'Date' },
+        yaxis: { title: 'Revenue' },
+    };
 
-    // Create x-axis
-    svg.append("g")
-        .attr("transform", `translate(0,${svgHeight})`)
-        .call(d3.axisBottom(xScale));
-
-    // Create y-axis
-    svg.append("g")
-        .call(d3.axisLeft(yScale));
-
-    // Add labels, titles, and other chart elements as needed
+    // Create the Plotly graph inside the "line-chart" div
+    Plotly.newPlot('line-chart', traces, layout);
 });
 
 
 // INCOME TAXATION -- PIE CHART
-// fetch data from json "../json/national_market.json" and prepare a line graph with sum of revenue for each year
-d3.json("https://vickyl86.github.io/Dashboard_1/json/national_market.json").then(function(data) {
-    console.log(data);
-
-    // Convert object to an array of values
-    var dataArray = Object.values(data);
-
-    // Prepare data for summing revenue and taxes by year
-    var revenueByYear = {};
-    var taxesByYear = {};
-
-    // Loop through the data and sum revenue and taxes by year
-    dataArray.forEach(function(d) {
-        var year = new Date(d.month).getFullYear();
-        var revenue = parseFloat(d.revenue.replace(/[\$,]/g, '')); // Convert revenue to a number
-        var taxes = parseFloat(d.taxes.replace(/[\$,]/g, '')); // Convert taxes to a number
-        if (!revenueByYear[year]) {
-            revenueByYear[year] = revenue;
-            taxesByYear[year] = taxes;
-        } else {
-            revenueByYear[year] += revenue;
-            taxesByYear[year] += taxes;
-        }
-    });
-
-    // Extract years, revenue, and taxes for plotting
-    var years = Object.keys(revenueByYear);
-    var revenue = Object.values(revenueByYear);
-    var taxes = Object.values(taxesByYear);
-
-    // Create line graphs for revenue and taxes
-    var trace1 = {
-        x: years,
-        y: revenue,
-        mode: "lines",
-        name: "Total Revenue"
-    };
-
-    var trace2 = {
-        x: years,
-        y: taxes,
-        mode: "lines",
-        name: "Taxes"
-    };
-
-    var data = [trace1, trace2];
-    var layout = {
-        title: "Total Revenue and Taxes from Sports Betting",
-        xaxis: { title: "Year" },
-        yaxis: { title: "Amount (in millions)" },
-        legend: { x: 0, y: 1 }
-    };
-
-    Plotly.newPlot("line-graph", data, layout); // Make sure to target the correct element ID here
-});
+// Load JSON data using D3.js
 
 
 
