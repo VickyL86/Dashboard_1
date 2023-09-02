@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sports Betting Dashboard</title>
+    <link rel="stylesheet" href="HTML/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+ <!-------------------------------MENU/NAV BEGINS HERE-------------------------------->    
+<body>
+    <div class="menu">
+      <button class="menu-button" id="national-data-button">National Data</button>
+      <button class="menu-button" id="state-data-button">State Data</button>
+    </div>
+ <!-------------------------------NATIONAL DATA PAGE BEGINS HERE-------------------------------->    
+    <div class="page" id="national-page">
+      <h1 class="page-title">Sports Betting National Data</h1>
+      <label for="yearSelect">Select Year Legalized:</label>
+                    <select id="yearSelect">
+                        <option value="0">All Years</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                    </select>
+      
+      <div class="grid-container">
+        <div class="grid-item top-left">
+            <div id="map-container" style="position: relative; display: flex;"></div>
+                <div id="map" style="width: 100%; height: 400px;"></div>
+                <div class="legend" style="position: absolute; bottom: 10px; right: 10px;">
+            </div>
+        </div>
+        <div class="grid-item top-right">
+            <div class="legend-title">Sports Betting Legalization Status</div>
+            <div class="legend-entry">
+                <div class="color-box" style="background-color: #0570E5;"></div>
+                <div class="legend-text">Online & In-Person</div>
+            </div>
+            <div class="legend-entry">
+                <div class="color-box" style="background-color: #001F3F;"></div>
+                <div class="legend-text">In Person Only</div>
+            </div>
+            <div class="legend-entry">
+                <div class="color-box" style="background-color: #3498DB;"></div>
+                <div class="legend-text">Online Only</div>
+            </div>
+            <div class="legend-entry">
+                <div class="color-box" style="background-color: #F39C12;"></div>
+                <div class="legend-text">Pending</div>
+            </div>
+            <div class="legend-entry">
+                <div class="color-box" style="background-color: #BDC3C7;"></div>
+                <div class="legend-text">Other</div>
+            </div> 
+        </div>
+        <div class="grid-item bottom-left">
+          <!-- Line Graph -->
+          <div id="line-graph" style="width: 100%; height: 400px;"></div>
+        </div>
+        <div class="grid-item bottom-right">
+          <!-- Pie Chart -->
+          <div id="pie-chart"style="width: 100%; height: 500px;"></div>
+          <!-- You can embed your pie chart component here -->
+        </div>
+      </div>
+    </div>
+  <!-------------------------------STATE DATA PAGE BEGINS HERE-------------------------------->
+    <div class="page" id="state-page">
+        <!-- State Data content -->
+        <h1 class="page-title">Sports Betting by State</h1>
+        <label for="stateSelect">Select a State:</label>
+        <input type="text" id="stateSearch" placeholder="Search for a state...">
+        <select id="stateSelect"></select>
+        
+        <div class="grid-container">
+          <div class="grid-item top-left">
+            <!-- Map with Legend -->
+            <!-- You can embed your map component here -->
+          </div>
+          <div class="grid-item top-right">
+            <!-- Line Chart -->
+            <!-- You can embed your line chart component here -->
+          </div>
+          <div class="grid-item bottom-left">
+            <!-- Bar Graph -->
+            <!-- You can embed your bar graph component here -->
+          </div>
+          <div class="grid-item bottom-right">
+            <!-- Pie Chart -->
+            <!-- You can embed your pie chart component here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript logic - switching between pages and initializing page content
+  
+      const nationalPage = document.getElementById('national-page');
+      const statePage = document.getElementById('state-page');
+      const nationalDataButton = document.getElementById('national-data-button');
+      const stateDataButton = document.getElementById('state-data-button');
+  
+      function showNationalPage() {
+          nationalPage.style.display = 'block';
+          statePage.style.display = 'none';
+      }
+  
+      function showStatePage() {
+          statePage.style.display = 'block';
+          nationalPage.style.display = 'none';
+      }
+  
+      function handleNavigation(event) {
+          const targetPage = event.state.page;
+          if (targetPage === 'national') {
+              showNationalPage();
+          } else if (targetPage === 'state') {
+              showStatePage();
+          }
+      }
+  
+      nationalDataButton.addEventListener('click', () => {
+          showNationalPage();
+          history.pushState({ page: 'national' }, 'National Data', '/national');
+      });
+  
+      stateDataButton.addEventListener('click', () => {
+          showStatePage();
+          history.pushState({ page: 'state' }, 'State Data', '/state');
+      });
+  
+      window.addEventListener('popstate', handleNavigation);
+  
+      // Initial page load
+      // Only show the national page on initialization
+      showNationalPage();
+  </script>
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="JavaScript/logic.js"></script>
+</body>
+
+</html>

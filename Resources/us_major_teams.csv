@@ -1,0 +1,143 @@
+Team,Venue,City,State/Province,League
+Arizona Diamondbacks,Chase Field,Phoenix,Arizona,MLB
+Phoenix Suns,Footprint Center,Phoenix,Arizona,NBA
+Arizona Cardinals,State Farm Stadium,Glendale,Arizona,NFL
+Arizona Coyotes,Mullett Arena,Tempe,Arizona,NHL
+Anaheim Ducks,Honda Center,Anaheim,California,NHL
+LA Galaxy,Dignity Health Sports Park,Carson,California,MLS
+Los Angeles FC,Banc of California Stadium,Los Angeles,California,MLS
+Los Angeles Kings,Crypto.com Arena,Los Angeles,California,NHL
+San Diego Padres,Petco Park,San Diego,California,MLB
+San Francisco 49ers,Levi's Stadium,Santa Clara,California,NFL
+San Jose Sharks,SAP Center at San Jose,San Jose,California,NHL
+San Diego MLS team,Snapdragon Stadium,San Diego,California,MLS
+Los Angeles Chargers,SoFi Stadium,Inglewood,California,NFL
+Los Angeles Angels,Angel Stadium,Anaheim,California,MLB
+Los Angeles Dodgers,Dodger Stadium,Los Angeles,California,MLB
+Los Angeles Clippers,Crypto.com Arena,Los Angeles,California,NBA
+Los Angeles Rams,SoFi Stadium,Inglewood,California,NFL
+Los Angeles Lakers,Crypto.com Arena,Los Angeles,California,NBA
+San Francisco Giants,Oracle Park,San Francisco,California,MLB
+Oakland Athletics,Oakland Coliseum,Oakland,California,MLB
+Golden State Warriors,Chase Center,San Francisco,California,NBA
+Sacramento Kings,Golden 1 Center,Sacramento,California,NBA
+San Jose Earthquakes,PayPal Park,San Jose,California,MLS
+Colorado Rapids,Dick's Sporting Goods Park,Commerce City,Colorado,MLS
+Colorado Rockies,Coors Field,Denver,Colorado,MLB
+Denver Broncos,Empower Field at Mile High,Denver,Colorado,NFL
+Denver Nuggets,Ball Arena,Denver,Colorado,NBA
+Colorado Avalanche,Ball Arena,Denver,Colorado,NHL
+D.C. United,Audi Field,Washington,District of Columbia,MLS
+Washington Capitals,Capital One Arena,Washington,District of Columbia,NHL
+Washington Wizards,Capital One Arena,Washington,District of Columbia,NBA
+Washington Nationals,Nationals Park,Washington,District of Columbia,MLB
+Florida Panthers,FLA Live Arena,Sunrise,Florida,NHL
+Jacksonville Jaguars,TIAA Bank Field,Jacksonville,Florida,NFL
+Miami Dolphins,Hard Rock Stadium,Miami Gardens,Florida,NFL
+Miami Heat,Kaseya Center,Miami,Florida,NBA
+Inter Miami CF,DRV PNK Stadium,Fort Lauderdale,Florida,MLS
+Miami Marlins,loanDepot Park,Miami,Florida,MLB
+Orlando City SC,Exploria Stadium,Orlando,Florida,MLS
+Orlando Magic,Amway Center,Orlando,Florida,NBA
+Tampa Bay Buccaneers,Raymond James Stadium,Tampa,Florida,NFL
+Tampa Bay Lightning,Amalie Arena,Tampa,Florida,NHL
+Tampa Bay Rays,Tropicana Field,St. Petersburg,Florida,MLB
+Atlanta Falcons,Mercedes-Benz Stadium,Atlanta,Georgia,NFL
+Atlanta United FC,Mercedes-Benz Stadium,Atlanta,Georgia,MLS
+Atlanta Braves,Truist Park,Cumberland,Georgia,MLB
+Atlanta Hawks,State Farm Arena,Atlanta,Georgia,NBA
+Chicago Blackhawks,United Center,Chicago,Illinois,NHL
+Chicago Bulls,United Center,Chicago,Illinois,NBA
+Chicago Cubs,Wrigley Field,Chicago,Illinois,MLB
+Chicago Fire FC,Soldier Field,Chicago,Illinois,MLS
+Chicago White Sox,Guaranteed Rate Field,Chicago,Illinois,MLB
+Chicago Bears,Soldier Field,Chicago,Illinois,NFL
+Indiana Pacers,Gainbridge Fieldhouse,Indianapolis,Indiana,NBA
+Indianapolis Colts,Lucas Oil Stadium,Indianapolis,Indiana,NFL
+Sporting Kansas City,Children's Mercy Park,Kansas City,Kansas,MLS
+New Orleans Saints,Caesars Superdome,New Orleans,Louisiana,NFL
+New Orleans Pelicans,Smoothie King Center,New Orleans,Louisiana,NBA
+Washington Commanders,FedExField,Landover,Maryland,NFL
+Baltimore Orioles,Oriole Park at Camden Yards,Baltimore,Maryland,MLB
+Baltimore Ravens,M&T Bank Stadium,Baltimore,Maryland,NFL
+Boston Bruins,TD Garden,Boston,Massachusetts,NHL
+Boston Celtics,TD Garden,Boston,Massachusetts,NBA
+Boston Red Sox,Fenway Park,Boston,Massachusetts,MLB
+New England Patriots,Gillette Stadium,Foxborough,Massachusetts,NFL
+New England Revolution,Gillette Stadium,Foxborough,Massachusetts,MLS
+Detroit Red Wings,Little Caesars Arena,Detroit,Michigan,NHL
+Detroit Tigers,Comerica Park,Detroit,Michigan,MLB
+Detroit Pistons,Little Caesars Arena,Detroit,Michigan,NBA
+Detroit Lions,Ford Field,Detroit,Michigan,NFL
+Minnesota Timberwolves,Target Center,Minneapolis,Minnesota,NBA
+Minnesota United FC,Allianz Field,St. Paul,Minnesota,MLS
+Minnesota Vikings,U.S. Bank Stadium,Minneapolis,Minnesota,NFL
+Minnesota Wild,Xcel Energy Center,St. Paul,Minnesota,NHL
+Minnesota Twins,Target Field,Minneapolis,Minnesota,MLB
+Kansas City Royals,Kauffman Stadium,Kansas City,Missouri,MLB
+St. Louis Blues,Enterprise Center,St. Louis,Missouri,NHL
+St. Louis Cardinals,Busch Stadium,St. Louis,Missouri,MLB
+St. Louis City SC,CityPark,St. Louis,Missouri,MLS
+Kansas City Chiefs,Arrowhead Stadium,Kansas City,Missouri,NFL
+Vegas Golden Knights,T-Mobile Arena,Paradise,Nevada,NHL
+Las Vegas Raiders,Allegiant Stadium,Paradise,Nevada,NFL
+New York Giants,MetLife Stadium,East Rutherford,New Jersey,NFL
+New York Jets,MetLife Stadium,East Rutherford,New Jersey,NFL
+New York Red Bulls,Red Bull Arena,Harrison,New Jersey,MLS
+New Jersey Devils,Prudential Center,Newark,New Jersey,NHL
+Buffalo Bills,Highmark Stadium,Orchard Park,New York,NFL
+Buffalo Sabres,KeyBank Center,Buffalo,New York,NHL
+New York City FC,Yankee Stadium,New York City,New York,MLS
+New York Islanders,UBS Arena,Elmont,New York,NHL
+New York Knicks,Madison Square Garden,New York City,New York,NBA
+New York Mets,Citi Field,New York City,New York,MLB
+New York Rangers,Madison Square Garden,New York City,New York,NHL
+New York Yankees,Yankee Stadium,New York City,New York,MLB
+Brooklyn Nets,Barclays Center,New York City,New York,NBA
+Carolina Panthers,Bank of America Stadium,Charlotte,North Carolina,NFL
+Charlotte Hornets,Spectrum Center,Charlotte,North Carolina,NBA
+Charlotte FC,Bank of America Stadium,Charlotte,North Carolina,MLS
+Carolina Hurricanes,PNC Arena,Raleigh,North Carolina,NHL
+Cincinnati Bengals,Paycor Stadium,Cincinnati,Ohio,NFL
+Cincinnati Reds,Great American Ball Park,Cincinnati,Ohio,MLB
+FC Cincinnati,TQL Stadium,Cincinnati,Ohio,MLS
+Cleveland Cavaliers,Rocket Mortgage FieldHouse,Cleveland,Ohio,NBA
+Columbus Blue Jackets,Nationwide Arena,Columbus,Ohio,NHL
+Columbus Crew SC,Lower.com Field,Columbus,Ohio,MLS
+Cleveland Browns,FirstEnergy Stadium,Cleveland,Ohio,NFL
+Cleveland Guardians,Progressive Field,Cleveland,Ohio,MLB
+Oklahoma City Thunder,Paycom Center,Oklahoma City,Oklahoma,NBA
+Portland Trail Blazers,Moda Center,Portland,Oregon,NBA
+Portland Timbers,Providence Park,Portland,Oregon,MLS
+Philadelphia Eagles,Lincoln Financial Field,Philadelphia,Pennsylvania,NFL
+Philadelphia Flyers,Wells Fargo Center,Philadelphia,Pennsylvania,NHL
+Philadelphia Phillies,Citizens Bank Park,Philadelphia,Pennsylvania,MLB
+Philadelphia Union,Subaru Park,Chester,Pennsylvania,MLS
+Pittsburgh Penguins,PPG Paints Arena,Pittsburgh,Pennsylvania,NHL
+Pittsburgh Pirates,PNC Park,Pittsburgh,Pennsylvania,MLB
+Pittsburgh Steelers,Acrisure Stadium,Pittsburgh,Pennsylvania,NFL
+Philadelphia 76ers,Wells Fargo Center,Philadelphia,Pennsylvania,NBA
+Nashville Predators,Bridgestone Arena,Nashville,Tennessee,NHL
+Nashville SC,Geodis Park,Nashville,Tennessee,MLS
+Tennessee Titans,Nissan Stadium,Nashville,Tennessee,NFL
+Memphis Grizzlies,FedExForum,Memphis,Tennessee,NBA
+FC Dallas,Toyota Stadium,Frisco,Texas,MLS
+Dallas Cowboys,AT&T Stadium,Arlington,Texas,NFL
+Dallas Mavericks,American Airlines Center,Dallas,Texas,NBA
+Houston Texans,NRG Stadium,Houston,Texas,NFL
+Houston Astros,Minute Maid Park,Houston,Texas,MLB
+Austin FC,Q2 Stadium,Austin,Texas,MLS
+Houston Dynamo FC,Shell Energy Stadium,Houston,Texas,MLS
+San Antonio Spurs,AT&T Center,San Antonio,Texas,NBA
+Dallas Stars,American Airlines Center,Dallas,Texas,NHL
+Houston Rockets,Toyota Center,Houston,Texas,NBA
+Texas Rangers,Globe Life Field,Arlington,Texas,MLB
+Real Salt Lake,Rio Tinto Stadium,Sandy,Utah,MLS
+Utah Jazz,Vivint Arena,Salt Lake City,Utah,NBA
+Seattle Mariners,T-Mobile Park,Seattle,Washington,MLB
+Seattle Seahawks,Lumen Field,Seattle,Washington,NFL
+Seattle Sounders FC,Lumen Field,Seattle,Washington,MLS
+Seattle Kraken,Climate Pledge Arena,Seattle,Washington,NHL
+Green Bay Packers,Lambeau Field,Green Bay,Wisconsin,NFL
+Milwaukee Bucks,Fiserv Forum,Milwaukee,Wisconsin,NBA
+Milwaukee Brewers,American Family Field,Milwaukee,Wisconsin,MLB

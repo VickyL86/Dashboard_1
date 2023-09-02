@@ -1,0 +1,53 @@
+state_abbr,state,tax_status
+AK,Alaska,No
+AL,Alabama,Yes
+AR,Arkansas,Yes
+AZ,Arizona,Yes
+CA,California,No
+CO,Colorado,Yes
+CT,Connecticut,Yes
+DC,District of Columbia,Yes
+DE,Delaware,Yes
+FL,Florida,No
+GA,Georgia,Yes
+HI,Hawaii,No
+IA,Iowa,Yes
+ID,Idaho,Yes
+IL,Illinois,Yes
+IN,Indiana,Yes
+KS,Kansas,Yes
+KY,Kentucky,Yes
+LA,Louisiana,Yes
+MA,Massachusetts,Yes
+MD,Maryland,Yes
+ME,Maine,Yes
+MI,Michigan,Yes
+MN,Minnesota,Yes
+MO,Missouri,Yes
+MS,Mississippi,Yes
+MT,Montana,Yes
+NC,North Carolina,Yes
+ND,North Dakota,Yes
+NE,Nebraska,Yes
+NH,New Hampshire,No
+NJ,New Jersey,Yes
+NM,New Mexico,Yes
+NV,Nevada,No
+NY,New York,Yes
+OH,Ohio,Yes
+OK,Oklahoma,Yes
+OR,Oregon,Yes
+PA,Pennsylvania,Yes
+PR,Puerto Rico,
+RI,Rhode Island,Yes
+SC,South Carolina,Yes
+SD,South Dakota,No
+TN,Tennessee,No
+TX,Texas,No
+UT,Utah,No
+VA,Virginia,Yes
+VT,Vermont,Yes
+WA,Washington,No
+WI,Wisconsin,Yes
+WV,West Virginia,Yes
+WY,Wyoming,No

@@ -1,0 +1,52 @@
+state,online,in_person,Ways_to_bet
+Alabama,NO,NO,Not Legal
+Alaska,NO,NO,Not Legal
+Arizona,YES,YES,Online & In-Person
+Arkansas,YES,YES,Online & In-Person
+California,NO,NO,Not Legal
+Colorado,YES,YES,Online & In-Person
+Connecticut,YES,YES,Online & In-Person
+Delaware,NO,YES,In Person Only
+Florida,NO,NO,Not Legal
+Georgia,NO,NO,Not Legal
+Hawaii,NO,NO,Not Legal
+Idaho,NO,NO,Not Legal
+Illinois,YES,YES,Online & In-Person
+Indiana,YES,YES,Online & In-Person
+Iowa,YES,YES,Online & In-Person
+Kansas,YES,YES,Online & In-Person
+Kentucky,Pending,Pending,Pending
+Louisiana,YES,YES,Online & In-Person
+Maine,Pending,Pending,Pending
+Maryland,YES,YES,Online & In-Person
+Massachusetts,YES,YES,Online & In-Person
+Michigan,YES,YES,Online & In-Person
+Minnesota,NO,NO,Not Legal
+Mississippi,NO,YES,In Person Only
+Missouri,NO,NO,Not Legal
+Montana,NO,YES,In Person Only
+Nebraska,NO,Pending,Pending
+Nevada,YES,YES,Online & In-Person
+New Hampshire,YES,YES,Online & In-Person
+New Jersey,YES,YES,Online & In-Person
+New Mexico,NO,YES,In Person Only
+New York,YES,YES,Online & In-Person
+North Carolina,NO,YES,In Person Only
+North Dakota,NO,YES,In Person Only
+Ohio,YES,YES,Online & In-Person
+Oklahoma,NO,NO,Not Legal
+Oregon,YES,YES,Online & In-Person
+Pennsylvania,YES,YES,Online & In-Person
+Rhode Island,YES,YES,Online & In-Person
+South Carolina,NO,NO,Not Legal
+South Dakota,NO,YES,In Person Only
+Tennessee,YES,NO,Online Only
+Texas,NO,NO,Not Legal
+Utah,NO,NO,Not Legal
+Vermont,Pending,NO,Pending
+Virginia,YES,YES,Online & In-Person
+Washington,NO,YES,In Person Only
+District of Columbia,YES,YES,Online & In-Person
+West Virginia,YES,YES,Online & In-Person
+Wisconsin,NO,YES,In Person Only
+Wyoming,YES,NO,Online Only

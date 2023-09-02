@@ -1,0 +1,512 @@
+{
+    "0": {
+        "": "0",
+        "state_abbr": "AK",
+        "state": "Alaska",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "1": {
+        "": "1",
+        "state_abbr": "AL",
+        "state": "Alabama",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "2": {
+        "": "2",
+        "state_abbr": "AR",
+        "state": "Arkansas",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "3": {
+        "": "3",
+        "state_abbr": "AZ",
+        "state": "Arizona",
+        "Teams Count": "4",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "4": {
+        "": "4",
+        "state_abbr": "CA",
+        "state": "California",
+        "Teams Count": "15",
+        "MLB": "5",
+        "NBA": "4",
+        "NFL": "3",
+        "NHL": "3"
+    },
+    "5": {
+        "": "5",
+        "state_abbr": "CO",
+        "state": "Colorado",
+        "Teams Count": "4",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "6": {
+        "": "6",
+        "state_abbr": "CT",
+        "state": "Connecticut",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "7": {
+        "": "7",
+        "state_abbr": "DC",
+        "state": "District of Columbia",
+        "Teams Count": "3",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "0",
+        "NHL": "1"
+    },
+    "8": {
+        "": "8",
+        "state_abbr": "DE",
+        "state": "Delaware",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "9": {
+        "": "9",
+        "state_abbr": "FL",
+        "state": "Florida",
+        "Teams Count": "9",
+        "MLB": "2",
+        "NBA": "2",
+        "NFL": "3",
+        "NHL": "2"
+    },
+    "10": {
+        "": "10",
+        "state_abbr": "GA",
+        "state": "Georgia",
+        "Teams Count": "3",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "0"
+    },
+    "11": {
+        "": "11",
+        "state_abbr": "HI",
+        "state": "Hawaii",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "12": {
+        "": "12",
+        "state_abbr": "IA",
+        "state": "Iowa",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "13": {
+        "": "13",
+        "state_abbr": "ID",
+        "state": "Idaho",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "14": {
+        "": "14",
+        "state_abbr": "IL",
+        "state": "Illinois",
+        "Teams Count": "5",
+        "MLB": "2",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "15": {
+        "": "15",
+        "state_abbr": "IN",
+        "state": "Indiana",
+        "Teams Count": "2",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "0"
+    },
+    "16": {
+        "": "16",
+        "state_abbr": "KS",
+        "state": "Kansas",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "17": {
+        "": "17",
+        "state_abbr": "KY",
+        "state": "Kentucky",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "18": {
+        "": "18",
+        "state_abbr": "LA",
+        "state": "Louisiana",
+        "Teams Count": "2",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "0"
+    },
+    "19": {
+        "": "19",
+        "state_abbr": "MA",
+        "state": "Massachusetts",
+        "Teams Count": "4",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "20": {
+        "": "20",
+        "state_abbr": "MD",
+        "state": "Maryland",
+        "Teams Count": "3",
+        "MLB": "1",
+        "NBA": "0",
+        "NFL": "2",
+        "NHL": "0"
+    },
+    "21": {
+        "": "21",
+        "state_abbr": "ME",
+        "state": "Maine",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "22": {
+        "": "22",
+        "state_abbr": "MI",
+        "state": "Michigan",
+        "Teams Count": "4",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "23": {
+        "": "23",
+        "state_abbr": "MN",
+        "state": "Minnesota",
+        "Teams Count": "4",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "24": {
+        "": "24",
+        "state_abbr": "MO",
+        "state": "Missouri",
+        "Teams Count": "4",
+        "MLB": "2",
+        "NBA": "0",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "25": {
+        "": "25",
+        "state_abbr": "MS",
+        "state": "Mississippi",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "26": {
+        "": "26",
+        "state_abbr": "MT",
+        "state": "Montana",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "27": {
+        "": "27",
+        "state_abbr": "NC",
+        "state": "North Carolina",
+        "Teams Count": "3",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "28": {
+        "": "28",
+        "state_abbr": "ND",
+        "state": "North Dakota",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "29": {
+        "": "29",
+        "state_abbr": "NE",
+        "state": "Nebraska",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "30": {
+        "": "30",
+        "state_abbr": "NH",
+        "state": "New Hampshire",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "31": {
+        "": "31",
+        "state_abbr": "NJ",
+        "state": "New Jersey",
+        "Teams Count": "3",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "2",
+        "NHL": "1"
+    },
+    "32": {
+        "": "32",
+        "state_abbr": "NM",
+        "state": "New Mexico",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "33": {
+        "": "33",
+        "state_abbr": "NV",
+        "state": "Nevada",
+        "Teams Count": "2",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "34": {
+        "": "34",
+        "state_abbr": "NY",
+        "state": "New York",
+        "Teams Count": "8",
+        "MLB": "2",
+        "NBA": "2",
+        "NFL": "1",
+        "NHL": "3"
+    },
+    "35": {
+        "": "35",
+        "state_abbr": "OH",
+        "state": "Ohio",
+        "Teams Count": "6",
+        "MLB": "2",
+        "NBA": "1",
+        "NFL": "2",
+        "NHL": "1"
+    },
+    "36": {
+        "": "36",
+        "state_abbr": "OK",
+        "state": "Oklahoma",
+        "Teams Count": "1",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "37": {
+        "": "37",
+        "state_abbr": "OR",
+        "state": "Oregon",
+        "Teams Count": "1",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "38": {
+        "": "38",
+        "state_abbr": "PA",
+        "state": "Pennsylvania",
+        "Teams Count": "7",
+        "MLB": "2",
+        "NBA": "1",
+        "NFL": "2",
+        "NHL": "2"
+    },
+    "39": {
+        "": "39",
+        "state_abbr": "RI",
+        "state": "Rhode Island",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "40": {
+        "": "40",
+        "state_abbr": "SC",
+        "state": "South Carolina",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "41": {
+        "": "41",
+        "state_abbr": "SD",
+        "state": "South Dakota",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "42": {
+        "": "42",
+        "state_abbr": "TN",
+        "state": "Tennessee",
+        "Teams Count": "3",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "43": {
+        "": "43",
+        "state_abbr": "TX",
+        "state": "Texas",
+        "Teams Count": "8",
+        "MLB": "2",
+        "NBA": "3",
+        "NFL": "2",
+        "NHL": "1"
+    },
+    "44": {
+        "": "44",
+        "state_abbr": "UT",
+        "state": "Utah",
+        "Teams Count": "1",
+        "MLB": "0",
+        "NBA": "1",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "45": {
+        "": "45",
+        "state_abbr": "VA",
+        "state": "Virginia",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "46": {
+        "": "46",
+        "state_abbr": "VT",
+        "state": "Vermont",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "47": {
+        "": "47",
+        "state_abbr": "WA",
+        "state": "Washington",
+        "Teams Count": "3",
+        "MLB": "1",
+        "NBA": "0",
+        "NFL": "1",
+        "NHL": "1"
+    },
+    "48": {
+        "": "48",
+        "state_abbr": "WI",
+        "state": "Wisconsin",
+        "Teams Count": "3",
+        "MLB": "1",
+        "NBA": "1",
+        "NFL": "1",
+        "NHL": "0"
+    },
+    "49": {
+        "": "49",
+        "state_abbr": "WV",
+        "state": "West Virginia",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    },
+    "50": {
+        "": "50",
+        "state_abbr": "WY",
+        "state": "Wyoming",
+        "Teams Count": "0",
+        "MLB": "0",
+        "NBA": "0",
+        "NFL": "0",
+        "NHL": "0"
+    }
+}
