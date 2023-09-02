@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Add this line to link to the external JavaScript file -->
+    <script src="script.js" defer></script>
 </head>
  <!-------------------------------MENU/NAV BEGINS HERE-------------------------------->    
 <body>
@@ -42,11 +47,11 @@
         <div class="grid-item top-right">
             <div class="legend-title">Sports Betting Legalization Status</div>
             <div class="legend-entry">
-                <div class="color-box" style="background-color: #0570E5;"></div>
+                <div class="color-box" style="background-color: #F39C12;"></div>
                 <div class="legend-text">Online & In-Person</div>
             </div>
             <div class="legend-entry">
-                <div class="color-box" style="background-color: #001F3F;"></div>
+                <div class="color-box" style="background-color: #194570;"></div>
                 <div class="legend-text">In Person Only</div>
             </div>
             <div class="legend-entry">
@@ -54,26 +59,49 @@
                 <div class="legend-text">Online Only</div>
             </div>
             <div class="legend-entry">
-                <div class="color-box" style="background-color: #F39C12;"></div>
+                <div class="color-box" style="background-color: #5e5e5d;"></div>
                 <div class="legend-text">Pending</div>
             </div>
             <div class="legend-entry">
                 <div class="color-box" style="background-color: #BDC3C7;"></div>
-                <div class="legend-text">Other</div>
+                <div class="legend-text">Not Legal</div>
             </div> 
+            <table id="summary-table"> 
+              <div class="header-container">
+                <h4>Choose Year for Detail Summary</h4>
+              </div>
+              <thead>
+                <tr style="text-align:center" style="width:100%">
+                    <th>State</th>
+                    <th>Revenue</th>
+                    <th>Taxes</th>
+                    <th>Date Legalized</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table data will go here -->
+            </tbody>
+            <tfoot>
+                <!-- Totals will go here -->
+            </tfoot>
+            </table>
         </div>
         <div class="grid-item bottom-left">
           <!-- Line Graph -->
-          <div id="line-graph" style="width: 100%; height: 400px;"></div>
+            <div id="line-chart" style="width: 100%; height: 400px;"></div>
         </div>
         <div class="grid-item bottom-right">
-          <!-- Pie Chart -->
-          <div id="pie-chart"style="width: 100%; height: 500px;"></div>
-          <!-- You can embed your pie chart component here -->
+          <!-- Bar Chart -->
+          <div id="bar-chart"style="width: 100%; height: 500px;"></div>
         </div>
       </div>
     </div>
-  <!-------------------------------STATE DATA PAGE BEGINS HERE-------------------------------->
+  
+  
+  
+  
+  
+    <!-------------------------------STATE DATA PAGE BEGINS HERE-------------------------------->
     <div class="page" id="state-page">
         <!-- State Data content -->
         <h1 class="page-title">Sports Betting by State</h1>
