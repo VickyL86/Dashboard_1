@@ -30,7 +30,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 //use json with state boundries from  https://eric.clst.org/tech/usgeojson/
 
-let link = "https://vickyl86.github.io/Project-3-Sports-Betting-Analysis/json/stateboundry_betting_info_added.json";
+let link = "https://vickyl86.github.io/Dashboard_1/json/stateboundry_betting_info_added.json";
 
 // The function that will determine the color of a state based on its Ways_to_bet
 function chooseColor(Ways_to_bet) {
@@ -101,7 +101,7 @@ fetch(link)
 
 // TOTAL REVENUE & TAXES -- LINE GRAPH
 //fetch data from ../json/stateboundry_betting_info_added.json and prepare a pie chart with tax_status
-d3.json("https://vickyl86.github.io/Project-3-Sports-Betting-Analysis/json/stateboundry_betting_info_added.json").then(function(data) {
+d3.json("https://vickyl86.github.io/Dashboard_1/json/stateboundry_betting_info_added.json").then(function(data) {
     console.log(data);
 
     // Convert object to an array of features
@@ -161,7 +161,7 @@ d3.json("https://vickyl86.github.io/Project-3-Sports-Betting-Analysis/json/state
 
 // INCOME TAXATION -- PIE CHART
 // fetch data from json "../json/national_market.json" and prepare a line graph with sum of revenue for each year
-d3.json("https://vickyl86.github.io/Project-3-Sports-Betting-Analysis/json/national_market.json").then(function(data) {
+d3.json("https://vickyl86.github.io/Dashboard_1/json/national_market.json").then(function(data) {
     console.log(data);
 
     // Convert object to an array of values
