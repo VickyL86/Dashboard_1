@@ -1,4 +1,6 @@
-# Sports Betting Data Dahsboard
+# Sports Betting Data Dahsboard: 
+
+Page Link: https://vickyl86.github.io/Dashboard_1/
 
 This project was inspired by a growing Sports Betting industry. The created dashboard intends to show a the revenue potential of the rapidly growing industry and explore differences in sports betting approach by differnet states. Since the Supreme Court’s decision in 2018 to overturn ban on sports betting, dozens of states have legalized online and/or in-person betting. Despite legalization, differences in state regulations have a visible effect on the industry’s growth and tax revenues. 
 
