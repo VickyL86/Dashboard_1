@@ -649,6 +649,9 @@ function calculateTrendline(x, y) {
 
 // Update revenue per capita bar graph based on selected state
 function updateBarGraph(selectedState) {
+    // Clear existing graph or message
+    revenuePerCapitaGraph.innerHTML = '';
+  
     const stateData = statesData.filter(item => item.state === selectedState);
 
     if (stateData.length > 0) {
@@ -729,6 +732,7 @@ stateSearch.addEventListener('input', () => {
     updateSummaryTable(selectedState);
     updateBarGraph(selectedState);  
 });
+
 
 // Handle state selection changes
 stateDropdown.addEventListener('change', () => {
