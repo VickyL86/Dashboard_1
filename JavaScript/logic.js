@@ -703,10 +703,10 @@ function updateBarGraph(selectedState) {
                         { method: 'relayout', args: ['xaxis.range', [new Date().setFullYear(new Date().getFullYear() - 1), new Date()]], label: '12 Months' },
                         { method: 'relayout', args: ['xaxis.range', [dates[0], dates[dates.length - 1]]], label: 'All Data' }
                     ],
-                    direction: 'right', // Position toggle boxes on the right side
+                    direction: 'right', 
                     showactive: false,
                     type: 'buttons',
-                    x: 1.05, // Adjust x position
+                    x: 1.05, 
                     xanchor: 'right',
                     y: 1.15,
                     yanchor: 'top'
@@ -722,10 +722,19 @@ function updateBarGraph(selectedState) {
     }
 }
 
-// Handle state selection changes for bar graph
+// Handle search input changes
+stateSearch.addEventListener('input', () => {
+    populateStates(stateSearch.value);  
+    const selectedState = stateDropdown.value; 
+    updateSummaryTable(selectedState);
+    updateBarGraph(selectedState);  
+});
+
+// Handle state selection changes
 stateDropdown.addEventListener('change', () => {
     const selectedState = stateDropdown.value;
-    updateBarGraph(selectedState);
+    updateSummaryTable(selectedState);
+    updateBarGraph(selectedState);  
 });
 
 // Fetch data and populate initial states
