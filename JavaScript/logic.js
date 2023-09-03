@@ -411,14 +411,11 @@ function updateSummaryTable(selectedState) {
     const stateData = statesData.filter(item => item.state === selectedState);
 
     if (stateData.length > 0) {
-        const totalRevenue = calculateTotalRevenue(selectedState);
         const summaryTable = document.getElementById('stateSummary');
         const summaryContent = `
             <h2>State Summary Table</h2>
             <table>
                 <tr><td>State:</td><td>${stateData[0].state}</td></tr>
-                <tr><td>Total Revenue:</td><td>${totalRevenue}</td></tr>
-                <tr><td>Taxes:</td><td>${stateData[0].taxes}</td></tr>
                 <tr><td>Betting:</td><td>${stateData[0].Ways_to_bet}</td></tr>
                 <tr><td>Legalized in:</td><td>${stateData[0].date}</td></tr>
                 <tr><td colspan="2"><h3>Census Data</h3></td></tr>
@@ -707,63 +704,4 @@ fetchStatesData().then(() => {
 
 
 // ----------------- PIe char showing revenue portion ----------
-
-// Function to update the pie chart based on selected state
-function updatePieChart(selectedState) {
-    const stateData = statesData.filter(item => item.state === selectedState);
-
-    if (stateData.length > 0) {
-        const totalRevenue = statesData.reduce((sum, item) => sum + parseFloat(item.revenue.replace('$', '')), 0);
-        const selectedStateRevenue = parseFloat(stateData[0].revenue.replace('$', ''));
-        const selectedStateWaysToBet = stateData[0].Ways_to_bet;
-
-        const pieData = [
-            {
-                labels: [`${selectedState}`, 'Other States Revenue'],
-                values: [selectedStateRevenue, totalRevenue - selectedStateRevenue],
-                type: 'pie',
-                hoverinfo: 'label+percent+value', // Show label, percentage, and value in the hover text
-                hovertemplate: '%{label}: %{value:$,.2f} (%{percent})<br>Total Revenue: $' + totalRevenue.toFixed(2),
-                marker: {
-                    colors: [
-                        selectedStateWaysToBet === "Online & In-Person" ? "#F39C12" :
-                        selectedStateWaysToBet === "In Person Only" ? "#194570" :
-                        selectedStateWaysToBet === "Online Only" ? "#3498DB" :
-                        "rgba(70, 70, 80, 0.7)",
-                        'rgba(70, 70, 80, 0.7)'
-                    ]
-                }
-            }
-        ];
-
-        const layout = {
-            title: `${selectedState} Revenue Share`,
-            showlegend: false, // Hide the legend
-            height: 400 // Adjust the height of the pie chart
-        };
-
-        Plotly.newPlot('pie-chart', pieData, layout);
-    } else {
-        document.getElementById('pie-chart').innerHTML = 'No data available for selected state.';
-    }
-}
-
-// Handle state selection changes for pie chart
-stateDropdown.addEventListener('change', () => {
-    const selectedState = stateDropdown.value;
-    updatePieChart(selectedState);
-});
-
-// Fetch data and populate initial states
-fetchStatesData().then(() => {
-    populateStates().then(() => {
-        // Get the first state from the dropdown
-        const firstState = stateDropdown.options[0].value;
-
-        // Update the bar chart, line chart, and pie chart with the first state
-        updateBarGraph(firstState);
-        updateGraph(firstState);
-        updatePieChart(firstState);
-    });
-});
 
