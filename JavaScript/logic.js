@@ -423,10 +423,21 @@ function calculateTotalRevenue(selectedState) {
     }
     return 0;
 }
+// Function to calculate the sum of taxes for the selected state
+function calculateTotalTaxes(selectedState) {
+    const stateData = statesData.filter(item => item.state === selectedState);
+    if (stateData.length > 0) {
+        return stateData.reduce((sum, item) => sum + item.taxes, 0);
+    }
+    return 0;
+}
 
 // Function to update the state summary table
 function updateSummaryTable(selectedState) {
     const stateData = statesData.filter(item => item.state === selectedState);
+
+    const totalRevenue = calculateTotalRevenue(selectedState);
+    const totalTaxes = calculateTotalTaxes(selectedState);
 
     if (stateData.length > 0) {
         const summaryTable = document.getElementById('stateSummary');
@@ -440,9 +451,9 @@ function updateSummaryTable(selectedState) {
                 <tr><td>Population 18+:</td><td>${Number(stateData[0].population_over_18).toLocaleString()}</td></tr>
                 <tr><td>Median Income: </td><td>${Number(stateData[0].earnings_median).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
                 <tr><td colspan="2"><h3>Revenue Data</h3></td></tr>
-                <tr><td>Total Revenue:</td><td>${stateData[0].revenue}</td></tr>
-                <tr><td>Total Tax: </td><td>${stateData[0].taxes}</td></tr>
-                </table>
+                <tr><td>Total Revenue:</td><td>${totalRevenue.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
+                <tr><td>Total Tax: </td><td>${totalTaxes.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
+            </table>
         `;
         summaryTable.innerHTML = summaryContent;
     } else {
