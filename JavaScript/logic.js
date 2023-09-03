@@ -621,7 +621,7 @@ function updateBarGraph(selectedState) {
 
     if (stateData.length > 0) {
         const dates = stateData.map(item => new Date(item.date));
-        const revenuePerCapita = stateData.map(item => parseFloat(item.revenue_per_capita.replace('$', '')));
+        const revenuePerCapita = stateData.map(item => parseFloat(item.revenue_per_capita));
         const waysToBet = stateData.map(item => item.Ways_to_bet);
 
         const barColors = waysToBet.map(way => {
