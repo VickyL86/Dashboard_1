@@ -437,9 +437,12 @@ function updateSummaryTable(selectedState) {
                 <tr><td>Betting:</td><td>${stateData[0].Ways_to_bet}</td></tr>
                 <tr><td>Legalized in:</td><td>${stateData[0].date}</td></tr>
                 <tr><td colspan="2"><h3>Census Data</h3></td></tr>
-                <tr><td>Population 18+:</td><td>${stateData[0].population_over_18}</td></tr>
-                <tr><td>Median Income:</td><td>${stateData[0].earnings_median}</td></tr>
-            </table>
+                <tr><td>Population 18+:</td><td>${Number(stateData[0].population_over_18).toLocaleString()}</td></tr>
+                <tr><td>Median Income: </td><td>${Number(stateData[0].earnings_median).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
+                <tr><td colspan="2"><h3>Revenue Data</h3></td></tr>
+                <tr><td>Total Revenue:</td><td>${stateData[0].revenue}</td></tr>
+                <tr><td>Total Tax: </td><td>${stateData[0].taxes}</td></tr>
+                </table>
         `;
         summaryTable.innerHTML = summaryContent;
     } else {
