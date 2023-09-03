@@ -99,21 +99,39 @@ fetch(link)
 
 // __________________SUMMARY TABLE_________________________________________________________________________
 
+
+// Create a table for the top 5 states by revenue
 document.addEventListener("DOMContentLoaded", function() {
     // Define the link to your JSON data
     let link = "https://vickyl86.github.io/Dashboard_1/json/stateboundry_betting_info_added.json";
 
     // Fetch the JSON data
     d3.json(link).then(function(data) {
+        // Populate the initial states for "All Years"
+        const statesData = data.features.map(d => d); // Create a copy of the data array
+        statesData.sort((a, b) => {
+            const revenueA = parseInt(a.properties.revenue.replace(/[\$,]/g, ""));
+            const revenueB = parseInt(b.properties.revenue.replace(/[\$,]/g, ""));
+            return revenueB - revenueA;
+        });
+        const top5Data = statesData.slice(0, 5);
+        createTable(top5Data);
+
         // Listen to dropdown change
         document.getElementById('yearSelect').addEventListener('change', function() {
             const selectedYear = this.value;
-            // Filter the data based on the 'year_legalized'
-            const filteredData = data.features.filter(d => d.properties.year_legalized == selectedYear);
-            createTable(filteredData);
+
+            if (selectedYear === "0") {
+                createTable(top5Data);
+            } else {
+                // Filter the data based on the selected year
+                const filteredData = data.features.filter(d => d.properties.year_legalized == selectedYear);
+                createTable(filteredData);
+            }
         });
     });
 });
+
 
 function createTable(data) {
     // Sort data by revenue in descending order
@@ -405,10 +423,21 @@ function calculateTotalRevenue(selectedState) {
     }
     return 0;
 }
+// Function to calculate the sum of taxes for the selected state
+function calculateTotalTaxes(selectedState) {
+    const stateData = statesData.filter(item => item.state === selectedState);
+    if (stateData.length > 0) {
+        return stateData.reduce((sum, item) => sum + item.taxes, 0);
+    }
+    return 0;
+}
 
 // Function to update the state summary table
 function updateSummaryTable(selectedState) {
     const stateData = statesData.filter(item => item.state === selectedState);
+
+    const totalRevenue = calculateTotalRevenue(selectedState);
+    const totalTaxes = calculateTotalTaxes(selectedState);
 
     if (stateData.length > 0) {
         const summaryTable = document.getElementById('stateSummary');
@@ -419,8 +448,11 @@ function updateSummaryTable(selectedState) {
                 <tr><td>Betting:</td><td>${stateData[0].Ways_to_bet}</td></tr>
                 <tr><td>Legalized in:</td><td>${stateData[0].date}</td></tr>
                 <tr><td colspan="2"><h3>Census Data</h3></td></tr>
-                <tr><td>Population 18+:</td><td>${stateData[0].population_over_18}</td></tr>
-                <tr><td>Median Income:</td><td>${stateData[0].earnings_median}</td></tr>
+                <tr><td>Population 18+:</td><td>${Number(stateData[0].population_over_18).toLocaleString()}</td></tr>
+                <tr><td>Median Income: </td><td>${Number(stateData[0].earnings_median).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
+                <tr><td colspan="2"><h3>Revenue Data</h3></td></tr>
+                <tr><td>Total Revenue:</td><td>${totalRevenue.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
+                <tr><td>Total Tax: </td><td>${totalTaxes.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}</td></tr>
             </table>
         `;
         summaryTable.innerHTML = summaryContent;

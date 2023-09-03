@@ -28,7 +28,7 @@
       <h1 class="page-title">Sports Betting National Data</h1>
       <label for="yearSelect">Select Year Legalized:</label>
                     <select id="yearSelect">
-                        <option value="0">All Years</option>
+                        <option value="0" selected>All Years</option>
                         <option value="2018">2018</option>
                         <option value="2019">2019</option>
                         <option value="2020">2020</option>
@@ -68,7 +68,7 @@
             </div> 
             <table id="summary-table"> 
               <div class="header-container">
-                <h4>Choose Year for Detail Summary</h4>
+                <h4>Choose Year for All Time Revenue Totals</h4>
               </div>
               <thead>
                 <tr style="text-align:center" style="width:100%">
@@ -104,7 +104,7 @@
     <!-------------------------------STATE DATA PAGE BEGINS HERE-------------------------------->
     <div class="page" id="state-page">
         <!-- State Data content -->
-      <h1 class="page-title">Sports Betting by State</h1>
+      <h1 class="page-title">Sports Betting Data by State</h1>
       <label for="stateSelect">Select a State:</label>
           <input type="text" id="stateSearch" placeholder="Search for a state...">
           <select id="stateDropdown"></select>
@@ -125,7 +125,7 @@
                 <div class="summary-section">
                     <h3>Census Data</h3>
                     <p><strong>Population 18+:</strong> <span id="summaryPopulation"></span></p>
-                    <p><strong>Median Income:</strong> $<span id="summaryIncome"></span></p>
+                    <p><strong>Median Income: </strong> <span id="summaryIncome"></span></p>
                 </div>
             </div>
         </div>
