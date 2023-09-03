@@ -99,21 +99,39 @@ fetch(link)
 
 // __________________SUMMARY TABLE_________________________________________________________________________
 
+
+// Create a table for the top 5 states by revenue
 document.addEventListener("DOMContentLoaded", function() {
     // Define the link to your JSON data
     let link = "https://vickyl86.github.io/Dashboard_1/json/stateboundry_betting_info_added.json";
 
     // Fetch the JSON data
     d3.json(link).then(function(data) {
+        // Populate the initial states for "All Years"
+        const statesData = data.features.map(d => d); // Create a copy of the data array
+        statesData.sort((a, b) => {
+            const revenueA = parseInt(a.properties.revenue.replace(/[\$,]/g, ""));
+            const revenueB = parseInt(b.properties.revenue.replace(/[\$,]/g, ""));
+            return revenueB - revenueA;
+        });
+        const top5Data = statesData.slice(0, 5);
+        createTable(top5Data);
+
         // Listen to dropdown change
         document.getElementById('yearSelect').addEventListener('change', function() {
             const selectedYear = this.value;
-            // Filter the data based on the 'year_legalized'
-            const filteredData = data.features.filter(d => d.properties.year_legalized == selectedYear);
-            createTable(filteredData);
+
+            if (selectedYear === "0") {
+                createTable(top5Data);
+            } else {
+                // Filter the data based on the selected year
+                const filteredData = data.features.filter(d => d.properties.year_legalized == selectedYear);
+                createTable(filteredData);
+            }
         });
     });
 });
+
 
 function createTable(data) {
     // Sort data by revenue in descending order
