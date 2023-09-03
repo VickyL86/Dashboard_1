@@ -462,46 +462,6 @@ function updateSummaryTable(selectedState) {
     }
 }
 
-// Handle search input changes
-stateSearch.addEventListener('input', () => {
-    populateStates(stateSearch.value);
-    updateSummaryTable(stateSearch.value);
-});
-
-// Handle state selection changes
-stateDropdown.addEventListener('change', () => {
-    const selectedState = stateDropdown.value;
-    updateSummaryTable(selectedState);
-});
-
-// Fetch data and populate initial states
-fetchStatesData().then(() => {
-    populateStates();
-});
-
-
-
-///--- SUMMARY TABLE PLACEHOLDER----------------------------
-
-
-
-// Handle search input changes
-stateSearch.addEventListener('input', () => {
-    populateStates(stateSearch.value);
-    updateSummaryTable(stateSearch.value);
-});
-
-// Handle state selection changes
-stateDropdown.addEventListener('change', () => {
-    const selectedState = stateDropdown.value;
-    updateSummaryTable(selectedState);
-});
-
-// Fetch data and populate initial states
-fetchStatesData().then(() => {
-    populateStates();
-});
-
 
 // ----------------- Line Graph for revenue & taxes  ----------
 
@@ -523,6 +483,10 @@ async function fetchStatesData() {
 
 // Update revenue and taxes line graph based on selected state
 function updateGraph(selectedState) {
+    
+    // Clear existing graph or message
+    revenueTaxesGraph.innerHTML = '';
+
     const stateData = statesData.filter(item => item.state === selectedState);
 
     if (stateData.length > 0) {
@@ -573,7 +537,7 @@ function updateGraph(selectedState) {
         Plotly.newPlot(revenueTaxesGraph, data, layout);
     } else {
         revenueTaxesGraph.innerHTML = 'No data available for selected state.';
-    }
+}
 }
 
 // Function to get color based on Ways_to_bet value
@@ -583,18 +547,6 @@ function getColorForWaysToBet(waysToBet) {
     if (waysToBet === "Online Only") return "#3498DB";
     return "rgba(70, 70, 80, 0.7)"; // Default color
 }
-
-// Handle state selection changes
-stateDropdown.addEventListener('change', () => {
-    const selectedState = stateDropdown.value;
-    updateGraph(selectedState);
-});
-
-// Fetch data and populate initial states
-fetchStatesData().then(() => {
-    populateStates();
-});
-
 
 
 // ----------------- Bar Graph for revenue per capita  ----------
@@ -614,6 +566,7 @@ async function fetchStatesData() {
         return [];
     }
 }
+
 
 // Fetch data and populate initial states
 fetchStatesData().then(() => {
@@ -649,6 +602,9 @@ function calculateTrendline(x, y) {
 
 // Update revenue per capita bar graph based on selected state
 function updateBarGraph(selectedState) {
+    // Clear existing graph or message
+    revenuePerCapitaGraph.innerHTML = '';
+  
     const stateData = statesData.filter(item => item.state === selectedState);
 
     if (stateData.length > 0) {
@@ -727,14 +683,17 @@ stateSearch.addEventListener('input', () => {
     populateStates(stateSearch.value);  
     const selectedState = stateDropdown.value; 
     updateSummaryTable(selectedState);
-    updateBarGraph(selectedState);  
+    updateBarGraph(selectedState);
+    updateGraph(selectedState);  // This line will update the Line Graph based on the newly selected state
 });
+
 
 // Handle state selection changes
 stateDropdown.addEventListener('change', () => {
     const selectedState = stateDropdown.value;
     updateSummaryTable(selectedState);
-    updateBarGraph(selectedState);  
+    updateBarGraph(selectedState);
+    updateGraph(selectedState);  
 });
 
 // Fetch data and populate initial states
