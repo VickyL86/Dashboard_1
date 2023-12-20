@@ -22,4 +22,4 @@ State site depicts:
 - tax & revenues over time
 - revenue per capita over time
 
-The project uses data BeautifulSoup scraped from sports betting websites and Census API. Files are fed into the javascript file via custom-created JSON file datasets. Data is set to be stored in a SQL database.
+The project uses data BeautifulSoup scraped from sports betting websites and Census API. Files are fed into the javascript file via custom-created JSON file datasets. 
